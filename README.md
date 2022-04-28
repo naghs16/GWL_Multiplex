@@ -11,7 +11,7 @@ Naghipour L., Aalami M.T., Nourani V. and Huang J.J. (2022) Collective dynamics 
 Intel® Pentium® CPU G2030 @ 3.00GHz 3GHz with 2 GByte RAM and 128 GByte Hardware (around 4 GByte of the Hardware will be used)
 
 # Setup Instructions
-If you already have a R environment, you could ignore this part and continue with explanations of the next part. Otherwise, install R according to your operating system. Microsoft R Open is the enhanced distribution of R from Microsoft Corporation, and this distribution is highly recommended.  
+If you already have a R environment, you could ignore this part and continue with explanations of the next part. Otherwise, install R according to your operating system. Microsoft R Open is the enhanced distribution of R from Microsoft Corporation, and this distribution is highly recommended by the scientists.  
 
 ## Prerequisites
 In the folowing, all instructions are tested based on R 4.1.0 with Ubuntu desktop operating system (Windows 7 works as well). 
@@ -25,4 +25,23 @@ install.packages(c('rEDM','igraph','brainGraph'))
 
 Note that there is a regular update for the library rEDM, while the source code CCM.R is implemented based on an older version of this library. Please follow the instruction released by the Sugihara Lab to be sure that an implementation of 'EDM' algorithms is based on the last version. 
 
+# Run the codes
+The modeling procedure consists of four steps. At first, the CCM method is computed for all possible pairs of interactions by running Rscript CCM_GWL.R with three arguments, group (I, II, III, IV), layer.name (MON) and layer.types (FOR, INV) as,
 
+```{r}
+Rscript CCM_GWL.R I MON FOR
+```
+
+Then, the values of z-score are obtained based on the surrogates data-sets for the MON and MUX dynamics by Rscript ZScore_MON.R and ZScore_MUX.R, respectively. 
+
+In ZScore_MON.R, the defined arguments are group (I, II, III, IV), layer.name (MON) and layer.types (FOR) as,
+
+```{r}
+Rscript ZScore_MON.R I MON FOR
+```
+
+In ZScore_MUX.R, the defined arguments are group (I, II, III, IV), layer.name (MON), layer.types (INV), z (1, 2, 3, 4, 5) as,
+
+```{r}
+Rscript ZScore_MUX.R I MON INV 1
+```
