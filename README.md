@@ -25,7 +25,7 @@ install.packages(c('rEDM','igraph','brainGraph'))
 
 Note that there is a regular update for the library rEDM, while the source code CCM.R is implemented based on an older version of this library. Please follow the instruction released by the Sugihara Lab to be sure that an implementation of 'EDM' algorithms is based on the last version. 
 
-# Run the codes
+# Run the Codes
 The modeling procedure consists of four steps. At first, the CCM method is computed for all possible pairs of interactions by running Rscript CCM_GWL.R with three arguments, group (I, II, III, IV), layer.name (MON) and layer.types (FOR, INV) as,
 
 ```{r}
@@ -40,8 +40,24 @@ In ZScore_MON.R, the defined arguments are group (I, II, III, IV), layer.name (M
 Rscript ZScore_MON.R I MON FOR
 ```
 
-In ZScore_MUX.R, the defined arguments are group (I, II, III, IV), layer.name (MON), layer.types (INV), z (1, 2, 3, 4, 5) as,
+In ZScore_MUX.R, the defined arguments are group (I, II, III, IV), layer.name (MON), layer.types (INV) and z (1, 2, 3, 4, 5) as,
 
 ```{r}
 Rscript ZScore_MUX.R I MON INV 1
+```
+In the next step, the networks are constructed according to Graph.R by using adjacency matrices obtained from threshording the computed z-score.
+
+In Graph.R, the defined arguments are group (I, II, III, IV), layer.name (MON), layer.type (FOR, INV, MUX) and z (1, 2, 3, 4, 5) as,
+
+```{r}
+Rscript Graph.R I MON FOR 1
+```
+
+Finally, the connections of the constructed networks are characterized in local and global scales by Local-Measures.R and Global-Measures.R, respectively.
+
+In Local-Measures.R and Global-Measures.R, the defined arguments are group (I, II, III, IV), layer.name (MON), layer.type (FOR, INV, MUX) and z (1, 2, 3, 4, 5) as,
+
+```{r}
+Rscript Local-Measures.R I MON FOR 1
+Rscript Global-Measures.R I MON FOR 1
 ```
