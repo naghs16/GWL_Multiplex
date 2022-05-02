@@ -8,7 +8,7 @@ If you use the codes, please cite the following paper:
 Naghipour L., Aalami M.T., Nourani V. and Huang J.J. (2022) Collective dynamics analysis by multiplex network to unravel the backbone of fluctuations in the groundwater level. Under review in computers and geosciences.
 
 # Computer Requirements
-Intel® Pentium® CPU G2030 @ 3.00GHz 3GHz with 2 GByte RAM and 128 GByte Hardware (around 4 GByte of the Hardware used during the analysis)
+Intel® Pentium® CPU G2030 @ 3.00GHz 3GHz with 2 GByte RAM and 128 GByte Hardware (the analysis is used around 5 GByte of the Hardware)
 
 # Setup Instructions
 If you already have a R environment, you could ignore this part and continue with explanations of the next part. Otherwise, you should install R based on your operating system (i.e. Windows etc). Microsoft R Open is the enhanced distribution of R from Microsoft Corporation, and this distribution is highly recommended by the scientists.  
@@ -45,7 +45,7 @@ In ZScore_MUX.R, the defined arguments are group (I, II, III, IV), layer.name (M
 ```{r}
 Rscript ZScore_MUX.R I MON INV 1
 ```
-In the next step, the networks are constructed from Rscript Graph.R using adjacency matrices obtained by threshording the z-score between each pair of the nodes.
+In the next step, the networks are constructed from Rscript Graph.R using the adjacency matrices obtained by threshording the z-score between each pair of the nodes.
 
 In Graph.R, the defined arguments are group (I, II, III, IV), layer.name (MON), layer.type (FOR, INV, MUX) and z (1, 2, 3, 4, 5) as,
 
